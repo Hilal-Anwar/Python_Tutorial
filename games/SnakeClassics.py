@@ -1,4 +1,3 @@
-import os
 import random
 import threading
 import time
@@ -19,9 +18,9 @@ class Game(threading.Thread):
     snake = []
     foodX = 0
     foodY = 0
-    snakeLength = 3
+    snake_length = 3
     score = 0
-    gameStatus = True
+    game_status = True
 
     def __init__(self, width, height):
         threading.Thread.__init__(self)
@@ -30,12 +29,14 @@ class Game(threading.Thread):
 
     def _draw(self):
         box = ''
-        food = '▓'
-        wall = '▓'
-        body = '▓'
+        food = '\033[0;31m██\33[0m'
+        wall = '\033[0;96m██\33[0m'
+        body = '\033[0;32m██\33[0m'
         for i in range(0, self.height + 1):
             for j in range(0, self.width + 1):
-                if i == 0 or i == self.height or j == 0 or j == self.width or (j == self.foodX and i == self.foodY):
+                if i == 0 or i == self.height or j == 0 or \
+                        j == self.width or \
+                        (j == self.foodX and i == self.foodY):
                     if j == self.foodX and i == self.foodY:
                         box = box + food
                     else:
@@ -43,7 +44,7 @@ class Game(threading.Thread):
                 elif self.is_snake_part(i, j):
                     box = box + body
                 else:
-                    box = box + ' '
+                    box = box + '  '
 
             box = box + '\n'
         print(box)
@@ -55,8 +56,18 @@ class Game(threading.Thread):
         return False
 
     def new_food(self):
+        i = 0
         self.foodX = int(random.random() * (self.width - 3) + 2)
         self.foodY = int(random.random() * (self.height - 3) + 2)
+        k = self.width * self.height
+        while i < k:
+            if not self.is_snake_part(self.foodX, self.foodY):
+                return
+            else:
+                self.foodX = int(random.random() * (self.width - 3) + 2)
+                self.foodY = int(random.random() * (self.height - 3) + 2)
+        self.foodX = 0
+        self.foodY = 0
 
     def _start_game(self):
         self.snake.append(SnakeBody(self.width / 2, self.height / 2))
@@ -65,15 +76,15 @@ class Game(threading.Thread):
         self.foodX = int(random.random() * (self.width - 3) + 2)
         self.foodY = int(random.random() * (self.height - 3) + 2)
         while True:
-            if self.gameStatus:
+            if self.game_status:
                 self.movement()
                 print()
-                print(self.space(self.width / 2 - 4) + 'Snake 2D')
+                print(self.space(self.width - 4) + 'Snake 2D')
                 print()
                 self._draw()
-                m = self.width - len(("Game length : " + str(self.snakeLength))) - len(
+                m = 2 * self.width + 2 - len(('Snake length : ' + str(self.snake_length))) - len(
                     ("Score : " + str(self.score)))
-                x = "Score : " + str(self.score) + self.space(m) + str('Snake length : ' + str(self.snakeLength))
+                x = "Score : " + str(self.score) + self.space(m) + str('Snake length : ' + str(self.snake_length))
                 print(x)
                 if self.direction == 'Key.esc':
                     break
@@ -83,10 +94,10 @@ class Game(threading.Thread):
                 print(self.score)
                 print('Enter space bar to continue......')
                 if self.direction == 'Key.space':
-                    self.gameStatus = True
+                    self.game_status = True
                     self.reset_game()
-            time.sleep(0.3)
-            os.system('cls')
+            time.sleep(0.1)
+            print("\033[H\033[J")
 
     def reset_game(self):
         self.snake.clear()
@@ -95,7 +106,7 @@ class Game(threading.Thread):
         self.snake.append(SnakeBody(self.width / 2, self.height / 2))
         self._dir = 'Key.right'
         self.score = 0
-        self.snakeLength = 3
+        self.snake_length = 3
 
     @staticmethod
     def space(v):
@@ -121,27 +132,27 @@ class Game(threading.Thread):
         if self._dir == 'Key.up':
             self.snake.__getitem__(0).y = self.snake.__getitem__(0).y - 1
             if self.snake.__getitem__(0).y == 0:
-                self.snake.__getitem__(0).y = self.height
+                self.snake.__getitem__(0).y = self.height - 1
         elif self._dir == 'Key.down':
             self.snake.__getitem__(0).y = self.snake.__getitem__(0).y + 1
             if self.snake.__getitem__(0).y == self.height:
-                self.snake.__getitem__(0).y = 0
+                self.snake.__getitem__(0).y = 1
         elif self._dir == 'Key.left':
             self.snake.__getitem__(0).x = self.snake.__getitem__(0).x - 1
             if self.snake.__getitem__(0).x == 0:
-                self.snake.__getitem__(0).x = self.width
+                self.snake.__getitem__(0).x = self.width - 1
         elif self._dir == 'Key.right':
             self.snake.__getitem__(0).x = self.snake.__getitem__(0).x + 1
             if self.snake.__getitem__(0).x == self.width:
-                self.snake.__getitem__(0).x = 0
+                self.snake.__getitem__(0).x = 1
 
         if self.snake.__getitem__(0).x == self.foodX and self.snake.__getitem__(0).y == self.foodY:
             self.snake.append(SnakeBody(0, 0))
             self.new_food()
             self.score = self.score + 8
-            self.snakeLength = self.snakeLength + 1
+            self.snake_length = self.snake_length + 1
         if self.head_hits_body():
-            self.gameStatus = False
+            self.game_status = False
 
     def run(self):
         self._start_game()
