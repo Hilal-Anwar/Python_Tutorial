@@ -179,7 +179,7 @@ if __name__ == '__main__':
     print('Enter the width and height')
     x_w = int(input())
     h_w = int(input())
-    game = Game(x_w, h_w)
+    game = Game(50, 30)
     game.start()
     keys = keyboard.Listener(on_press=on_press, args=(queue,))
     keys.start()
