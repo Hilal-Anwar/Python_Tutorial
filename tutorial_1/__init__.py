@@ -3,9 +3,9 @@ def draw_circle(r):
     for i in range(2 * r + 1):
         for j in range(2 * r + 1):
             if eq_circle(j, i, r):
-                circle = circle + ' * '
+                circle = circle + '* '
             else:
-                circle = circle + '   '
+                circle = circle + '  '
         circle = circle + '\n'
     print(circle)
 
