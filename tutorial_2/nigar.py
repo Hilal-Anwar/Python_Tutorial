@@ -1,0 +1,15 @@
+from platform import python_version
+
+name = input("Please enter your name \n")
+gender = input("Enter your gender boy or girl \n")
+print()
+print()
+print("-----------------------------Message for you---------------------------")
+print()
+print("My name is", name)
+print("I am a good", gender)
+print("Today I am learning coding for the first time.")
+print("I am using python", python_version())
+print("Wish me best of luck!:)")
+print()
+print("------------------------------------------------------------------------")

@@ -96,7 +96,7 @@ class Game(threading.Thread):
                 if self.direction == 'Key.space':
                     self.game_status = True
                     self.reset_game()
-            time.sleep(0.1)
+            time.sleep(0.01)
             print("\033[H\033[J")
 
     def reset_game(self):
