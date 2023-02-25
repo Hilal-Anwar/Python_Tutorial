@@ -82,9 +82,11 @@ class Game(threading.Thread):
                 print(self.space(self.width - 4) + 'Snake 2D')
                 print()
                 self._draw()
-                m = 2 * self.width + 2 - len(('Snake length : ' + str(self.snake_length))) - len(
+                m = 2 * self.width + 2 -
+                 len(('Snake length : ' + str(self.snake_length))) - len(
                     ("Score : " + str(self.score)))
-                x = "Score : " + str(self.score) + self.space(m) + str('Snake length : ' + str(self.snake_length))
+                x = "Score : " + str(self.score) +
+                 self.space(m) + str('Snake length : ' + str(self.snake_length))
                 print(x)
                 if self.direction == 'Key.esc':
                     break
@@ -146,7 +148,8 @@ class Game(threading.Thread):
             if self.snake.__getitem__(0).x == self.width:
                 self.snake.__getitem__(0).x = 1
 
-        if self.snake.__getitem__(0).x == self.foodX and self.snake.__getitem__(0).y == self.foodY:
+        if self.snake.__getitem__(0).x == self.foodX 
+        and self.snake.__getitem__(0).y == self.foodY:
             self.snake.append(SnakeBody(0, 0))
             self.new_food()
             self.score = self.score + 8
@@ -159,7 +162,8 @@ class Game(threading.Thread):
 
     def head_hits_body(self):
         for i in range(1, len(self.snake)):
-            if self.snake.__getitem__(0).x == self.snake.__getitem__(i).x and self.snake.__getitem__(
+            if self.snake.__getitem__(0).x == self.snake.__getitem__(i).x 
+            and self.snake.__getitem__(
                     0).y == self.snake.__getitem__(i).y:
                 return True
         return False
