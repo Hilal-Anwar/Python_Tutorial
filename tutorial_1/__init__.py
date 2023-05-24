@@ -12,16 +12,16 @@ def draw_circle(r):
 
 def eq_circle(x, y, r):
     return (pow(x, 2) +
-     pow(y, 2) + pow(r, 2) -
-      2 * r * (x + y)) <= 0
+            pow(y, 2) + pow(r, 2) -
+            2 * r * (x + y)) <= 0
 
 
 def donut(x, y, _r, r):
-    return pow(x, 2) + pow(y, 2) + 
-    pow(_r, 2) - 2 * _r * (x + y) <= 0 \
-           and (pow(x, 2) + 
-           pow(y, 2) + 2 * pow(_r, 2) - 2 * 
-           _r * (x + y)) >= r * r
+    return pow(x, 2) + pow(y, 2) + \
+        pow(_r, 2) - 2 * _r * (x + y) <= 0 \
+        and (pow(x, 2) +
+             pow(y, 2) + 2 * pow(_r, 2) - 2 *
+             _r * (x + y)) >= r * r
 
 
 if __name__ == '__main__':

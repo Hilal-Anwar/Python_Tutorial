@@ -1,7 +1,7 @@
 def tabularForm(a):
-    print('{}     {}     {}'.format("Country name","Country capital", "Currency"))
+    print('{}     {}     {}'.format("Country name", "Country capital", "Currency"))
     for k, v in a.items():
-        print('{}     {}     {}'.format(v[0],v[1],k))
+        print('{}     {}     {}'.format(v[0], v[1], k))
 
 
 if __name__ == '__main__':

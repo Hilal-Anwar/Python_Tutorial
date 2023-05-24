@@ -1,12 +1,14 @@
-class human:
-    a=0
-    b=0
-    c=""
+class Human:
+    age = 0
+    weight = 0
+    gender = ''
 
 
-class man(human):
-    def __init__(self,age,weight):
-        self.a=age
-        self.b=weight
-        self.c="male"
-print(man(20,35).b)
+class Person(Human):
+    def __init__(self, age, weight, gender):
+        self.age = age
+        self.weight = weight
+        self.gender = gender
+
+
+print(Person(20, 35, "male").__annotations__)

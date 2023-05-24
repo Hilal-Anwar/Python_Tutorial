@@ -13,7 +13,7 @@ print(a)
 
 
 def swap(_a, b):
-    return "a="+str(b),"b="+str(_a)
+    return "a=" + str(b), "b=" + str(_a)
 
 
 print(swap(_a=5, b=6))

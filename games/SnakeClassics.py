@@ -82,11 +82,10 @@ class Game(threading.Thread):
                 print(self.space(self.width - 4) + 'Snake 2D')
                 print()
                 self._draw()
-                m = 2 * self.width + 2 -
-                 len(('Snake length : ' + str(self.snake_length))) - len(
+                m = 2 * self.width + 2 - len(('Snake length : ' + str(self.snake_length))) - len(
                     ("Score : " + str(self.score)))
-                x = "Score : " + str(self.score) +
-                 self.space(m) + str('Snake length : ' + str(self.snake_length))
+                x = "Score : " + str(self.score) + self.space(m) + \
+                    str('Snake length : ' + str(self.snake_length))
                 print(x)
                 if self.direction == 'Key.esc':
                     break
@@ -98,7 +97,7 @@ class Game(threading.Thread):
                 if self.direction == 'Key.space':
                     self.game_status = True
                     self.reset_game()
-            time.sleep(0.01)
+            time.sleep(0.1)
             print("\033[H\033[J")
 
     def reset_game(self):
@@ -148,12 +147,12 @@ class Game(threading.Thread):
             if self.snake.__getitem__(0).x == self.width:
                 self.snake.__getitem__(0).x = 1
 
-        if self.snake.__getitem__(0).x == self.foodX 
-        and self.snake.__getitem__(0).y == self.foodY:
+        if self.snake.__getitem__(0).x == self.foodX and self.snake.__getitem__(0).y == self.foodY:
             self.snake.append(SnakeBody(0, 0))
             self.new_food()
             self.score = self.score + 8
             self.snake_length = self.snake_length + 1
+
         if self.head_hits_body():
             self.game_status = False
 
@@ -162,9 +161,8 @@ class Game(threading.Thread):
 
     def head_hits_body(self):
         for i in range(1, len(self.snake)):
-            if self.snake.__getitem__(0).x == self.snake.__getitem__(i).x 
-            and self.snake.__getitem__(
-                    0).y == self.snake.__getitem__(i).y:
+            if self.snake.__getitem__(0).x == self.snake.__getitem__(i).x and \
+                    self.snake.__getitem__(0).y == self.snake.__getitem__(i).y:
                 return True
         return False
 
@@ -172,11 +170,9 @@ class Game(threading.Thread):
 if __name__ == '__main__':
     queue = Queue()
 
-
     def on_press(self):
         key_pressed = "{0}".format(self)
         queue.put(key_pressed)
-
 
     print('Welcome to Snake 2D')
     print('Enter the esc key to exit')
