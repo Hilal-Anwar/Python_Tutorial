@@ -1,6 +1,6 @@
 s = ''
-for i in range(0, 16):
-    for j in range(0, 16):
+for i in range(0, 121):
+    for j in range(0, 121):
 
         if (i % 5 == 0) or (j % 5 == 0):
             s = s + '██'

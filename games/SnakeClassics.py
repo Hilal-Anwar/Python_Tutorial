@@ -2,6 +2,7 @@ import random
 import threading
 import time
 from queue import Queue
+from sys import argv
 
 from pynput import keyboard
 
@@ -90,7 +91,7 @@ class Game(threading.Thread):
                 if self.direction == 'Key.esc':
                     break
             else:
-                print("Game Over")
+                print('Game Over')
                 print("Snake Master")
                 print(self.score)
                 print('Enter space bar to continue......')
@@ -98,7 +99,7 @@ class Game(threading.Thread):
                     self.game_status = True
                     self.reset_game()
             time.sleep(0.1)
-            print("\033[H\033[J")
+            print("\u001b[H")
 
     def reset_game(self):
         self.snake.clear()
@@ -170,15 +171,14 @@ class Game(threading.Thread):
 if __name__ == '__main__':
     queue = Queue()
 
+
     def on_press(self):
         key_pressed = "{0}".format(self)
         queue.put(key_pressed)
 
-    print('Welcome to Snake 2D')
-    print('Enter the esc key to exit')
-    print('Enter the width and height')
-    x_w = int(input())
-    h_w = int(input())
+
+    x_w = int(argv.__getitem__(1))
+    h_w = int(argv.__getitem__(2))
     game = Game(50, 30)
     game.start()
     keys = keyboard.Listener(on_press=on_press, args=(queue,))

@@ -1,0 +1,6 @@
+a = int(input('Enter a number : '))
+b = int(input('Enter a number : '))
+mx = max(a, b)
+mi = min(a, b)
+print('The max number is = ', mx)
+print('The min number is = ', mi)

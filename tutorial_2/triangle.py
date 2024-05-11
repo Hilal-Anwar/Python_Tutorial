@@ -75,5 +75,5 @@ def get_reduced_factorization(n: int, spf: list) -> int:
 
 if __name__ == '__main__':
     a = time.time_ns()
-    pythagorean_triplets(50)
+    pythagorean_triplets(500000)
     print((time.time_ns()-a)/100000)
