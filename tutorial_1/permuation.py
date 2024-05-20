@@ -18,4 +18,4 @@ def swap__array(arr, size, i):
 
 
 if __name__ == '__main__':
-    __heaps__permutation([2, 3, 5, 4], 4)
+    __heaps__permutation(['s','h','a','d','a','f'], 6)
