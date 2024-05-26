@@ -1,13 +1,11 @@
-import matplotlib.pyplot as plt
-import pandas as pd
+from matplotlib import pyplot as plt
 import numpy as np
 
-plt.close("all")
-np.random.seed(123456)
+# Generate 100 random data points along 3 dimensions
+x, y, scale = np.random.randn(3, 500)
+fig, ax = plt.subplots()
 
-ts = pd.Series(np.random.randn(1000), index=pd.date_range("1/1/2000", periods=1000))
-
-ts = ts.cumsum()
-
-ts.plot()
+# Map each onto a scatterplot we'll create with Matplotlib
+ax.scatter(x=x, y=y, c=scale, s=np.abs(scale) * 500)
+ax.set(title="Some random data, created with JupyterLab!")
 plt.show()

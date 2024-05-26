@@ -177,9 +177,13 @@ if __name__ == '__main__':
         queue.put(key_pressed)
 
 
-    x_w = int(argv.__getitem__(1))
-    h_w = int(argv.__getitem__(2))
-    game = Game(50, 30)
+    try:
+        x_w = int(argv.__getitem__(1))
+        h_w = int(argv.__getitem__(2))
+    except IndexError:
+        x_w = 50
+        h_w = 30
+    game = Game(x_w, h_w)
     game.start()
     keys = keyboard.Listener(on_press=on_press, args=(queue,))
     keys.start()
