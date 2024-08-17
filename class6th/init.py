@@ -1,5 +1,3 @@
-print('athar ali',end='')
-print('Hilal Anwar')
-print(2578)
-a=568
-print(a)
+a = int(input("Enter a number"))
+q=a//13
+print((q+1)*13)

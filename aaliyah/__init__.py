@@ -1,12 +1,4 @@
-a = 10
-b = 20
-s = a + b
-dif = a - b
-p = a * b
-div = a / b
-r = a % b
-print(s)
-print(dif)
-print(p)
-print(div)
-print(r)
+for i in range(1, 6):
+    for j in range(1, i+1):
+        print(j,"", end="")
+    print()
