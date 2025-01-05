@@ -20,9 +20,9 @@ def is_prime(a):
     return c == 2
 
 
-def fac(n):
+def fac(_n):
     f = 1
-    for i in range(1, n + 1):
+    for i in range(1, _n + 1):
         f = f * i
     return f
 

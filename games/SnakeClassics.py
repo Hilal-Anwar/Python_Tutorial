@@ -71,9 +71,7 @@ class Game(threading.Thread):
         self.foodY = 0
 
     def _start_game(self):
-        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
-        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
-        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
+        self.default_snake()
         self.foodX = int(random.random() * (self.width - 3) + 2)
         self.foodY = int(random.random() * (self.height - 3) + 2)
         while True:
@@ -101,11 +99,14 @@ class Game(threading.Thread):
             time.sleep(0.1)
             print("\u001b[H")
 
+    def default_snake(self):
+        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
+        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
+        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
+
     def reset_game(self):
         self.snake.clear()
-        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
-        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
-        self.snake.append(SnakeBody(self.width / 2, self.height / 2))
+        self.default_snake()
         self._dir = 'Key.right'
         self.score = 0
         self.snake_length = 3
@@ -168,6 +169,7 @@ class Game(threading.Thread):
         return False
 
 
+
 if __name__ == '__main__':
     queue = Queue()
 
@@ -192,3 +194,9 @@ if __name__ == '__main__':
         Game.direction = value
         if value == 'Key.esc':
             break
+
+
+
+
+
+        
