@@ -5,7 +5,7 @@ d = a - b
 p = a * b
 di = a / b
 r = a % b
-print("The sum of", a, "and", b, "is = ", s)
+print("The su of", a, "and", b, "is = ", s)
 print(d)
 print(p)
 print(di)

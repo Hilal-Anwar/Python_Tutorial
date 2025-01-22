@@ -1,5 +1,5 @@
 """
-sum of the factors of number=number 
+su of the factors of number=number
 perfect number
 1+2+3+4+5+6
 """

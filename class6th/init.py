@@ -9,4 +9,4 @@ def binary_pascal(size):
             s = s + (str(int(f % 2)) + " ")
         s = s + '\n'
     return s
-print(binary_pascal(60))
+print(binary_pascal(600))
