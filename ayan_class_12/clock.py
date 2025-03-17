@@ -90,7 +90,7 @@ def main():
         print('\n'.join(s))
         sec = rotate(-6, Point(R, R), sec)
         print("\033[H", end="")
-        time.sleep(0.3)
+        #time.sleep(0.3)
 
 
 if __name__ == "__main__":
